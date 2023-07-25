@@ -30,7 +30,7 @@ package Foo::Bar;
 use strict;
 use ORLite {
 	file    => '$file',
-	cleanup => 'VACUUM ANALYZE',
+	cleanup => 'VACUUM; ANALYZE',
 };
 
 1;

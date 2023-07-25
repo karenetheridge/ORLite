@@ -1106,7 +1106,7 @@ The C<cleanup> option should be a single literal SQL statement.
 If provided, this statement will be automatically run on the database
 during C<END>-time, after the last transaction has been completed.
 
-This will typically either by a full C<'VACUUM ANALYZE'> or the more
+This will typically either by a full C<'VACUUM; ANALYZE'> or the more
 simple C<'VACUUM'>.
 
 =head2 prune
