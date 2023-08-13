@@ -1,5 +1,7 @@
 Changes for Perl extension ORLite
 
+{{$NEXT}}
+
 1.99      2023-08-13 21:09:06Z
         - fix test errors with DBD::SQLite >= 1.52 (RT#149134)
 
