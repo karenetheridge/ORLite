@@ -1,0 +1,6 @@
+/.ackrc
+/.build/
+!/.gitignore
+/.latest
+/ORLite-*/
+/ORLite-*.tar.gz
