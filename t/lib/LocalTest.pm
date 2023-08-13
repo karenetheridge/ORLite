@@ -1,4 +1,4 @@
-package t::lib::Test;
+package LocalTest;
 
 use strict;
 use Exporter     ();
