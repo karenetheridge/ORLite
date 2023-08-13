@@ -1,6 +1,7 @@
 Changes for Perl extension ORLite
 
 {{$NEXT}}
+        - fix test errors with DBD::SQLite >= 1.52 (RT#149134)
 
 1.98      2012-09-29
 	- When setting pragmas in void context, skip reading the changed
