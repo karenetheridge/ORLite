@@ -42,10 +42,7 @@ END_PERL
 CLASS: {
 	package Foo::Bar::TableOne;
 
-	use vars qw{$INCREMENT};
-	BEGIN {
-		$INCREMENT = 0;
-	}
+	our $INCREMENT = 0;
 
 	# Overload new to increment the counter
 	sub new {

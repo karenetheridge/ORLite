@@ -36,7 +36,7 @@ eval <<"END_PERL"; die $@ if $@;
 package Foo::Bar;
 
 use strict;
-use vars qw{\$VERSION};
+our \$VERSION;
 BEGIN {
 	\$VERSION = '1.23';
 }
@@ -76,7 +76,7 @@ eval <<"END_PERL"; die $@ if $@;
 package Foo::Bar;
 
 use strict;
-use vars qw{\$VERSION};
+our \$VERSION;
 BEGIN {
 	\$VERSION = '1.23';
 }

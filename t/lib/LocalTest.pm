@@ -8,15 +8,9 @@ use File::Remove ();
 use File::Spec::Functions ':ALL';
 use File::Temp ();
 
-use vars qw{@ISA @EXPORT};
+our @ISA = qw(Exporter);
+our @EXPORT = qw( test_db connect_ok create_ok );
 our $VERSION = '2.00';
-BEGIN {
-	@ISA     = 'Exporter';
-	@EXPORT  = qw{ test_db connect_ok create_ok };
-}
-
-
-
 
 
 #####################################################################
