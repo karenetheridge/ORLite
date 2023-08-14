@@ -1,4 +1,4 @@
-package t::lib::TableOne;
+package OverlayTest::TableOne;
 
 use strict;
 
