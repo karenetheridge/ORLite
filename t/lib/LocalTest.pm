@@ -6,6 +6,7 @@ use ORLite       ();
 use Test::More   ();
 use File::Remove ();
 use File::Spec::Functions ':ALL';
+use File::Temp ();
 
 use vars qw{@ISA @EXPORT};
 our $VERSION = '1.99';
@@ -29,7 +30,7 @@ END {
 }
 
 sub test_db {
-	my $file = catfile( @_ ? @_ : 't', 'sqlite.db' );
+	my $file = catfile( @_ ? @_ : File::Temp::tempdir( 'ORLite-test-XXXXXX', TMPDIR => 1, CLEANUP => 1 ), 'sqlite.db' );
 	unlink $file if -f $file;
 	$to_delete{$file} = 1;
 	return $file;
