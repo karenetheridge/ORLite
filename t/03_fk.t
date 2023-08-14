@@ -3,8 +3,8 @@
 # Tests relating to foreign keys.
 
 BEGIN {
-	$|  = 1;
-	$^W = 1;
+    $|  = 1;
+    $^W = 1;
 }
 
 use Test::More tests => 5;
@@ -22,8 +22,8 @@ use LocalTest;
 # Connect
 my $file = test_db();
 my $dbh  = create_ok(
-	file    => catfile(qw{ t 03_fk.sql }),
-	connect => [ "dbi:SQLite:$file" ],
+    file    => catfile(qw{ t 03_fk.sql }),
+    connect => [ "dbi:SQLite:$file" ],
 );
 
 # Create the test package

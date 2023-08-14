@@ -3,8 +3,8 @@
 # Same as 03_fk.t but with array => 1
 
 BEGIN {
-	$|  = 1;
-	$^W = 1;
+    $|  = 1;
+    $^W = 1;
 }
 
 use Test::More tests => 5;
@@ -22,8 +22,8 @@ use LocalTest;
 # Connect
 my $file = test_db();
 my $dbh  = create_ok(
-	file    => catfile(qw{ t 03_fk.sql }),
-	connect => [ "dbi:SQLite:$file" ],
+    file    => catfile(qw{ t 03_fk.sql }),
+    connect => [ "dbi:SQLite:$file" ],
 );
 
 # Create the test package
@@ -32,8 +32,8 @@ package Foo::Bar;
 
 use strict;
 use ORLite {
-	file => '$file',
-	array => 1,
+    file => '$file',
+    array => 1,
 };
 
 1;

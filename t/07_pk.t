@@ -3,8 +3,8 @@
 # Tests relating to primary keys.
 
 BEGIN {
-	$|  = 1;
-	$^W = 1;
+    $|  = 1;
+    $^W = 1;
 }
 
 use Test::More tests => 6;
@@ -19,8 +19,8 @@ use LocalTest;
 # Connect
 my $file = test_db();
 my $dbh  = create_ok(
-	file    => catfile(qw{ t 07_pk.sql }),
-	connect => [ "dbi:SQLite:$file" ],
+    file    => catfile(qw{ t 07_pk.sql }),
+    connect => [ "dbi:SQLite:$file" ],
 );
 
 # Create the test package

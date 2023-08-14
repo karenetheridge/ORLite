@@ -4,8 +4,8 @@
 
 use strict;
 BEGIN {
-	$|  = 1;
-	$^W = 1;
+    $|  = 1;
+    $^W = 1;
 }
 
 use Test::More tests => 2;
@@ -28,8 +28,8 @@ eval <<'END_PERL';
 package Foo;
 
 use ORLite {
-	file  => $file,
-	prune => 1,
+    file  => $file,
+    prune => 1,
 };
 
 1;

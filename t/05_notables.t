@@ -5,8 +5,8 @@
 use strict;
 
 BEGIN {
-	$|  = 1;
-	$^W = 1;
+    $|  = 1;
+    $^W = 1;
 }
 
 use Test::More tests => 5;
@@ -15,22 +15,22 @@ use lib 't/lib';
 use LocalTest;
 
 SCOPE: {
-	# Test file
-	my $file = test_db();
+    # Test file
+    my $file = test_db();
 
-	# Connect
-	my $dbh = connect_ok("dbi:SQLite:$file");
-	$dbh->begin_work;
-	$dbh->rollback;
-	ok( $dbh->disconnect, 'disconnect' );
+    # Connect
+    my $dbh = connect_ok("dbi:SQLite:$file");
+    $dbh->begin_work;
+    $dbh->rollback;
+    ok( $dbh->disconnect, 'disconnect' );
 }
 
 # Set up again
 my $file = test_db();
 my $dbh  = create_ok(
-	file         => catfile(qw{ t 02_basics.sql }),
-	connect      => [ "dbi:SQLite:$file" ],
-	user_version => 10,
+    file         => catfile(qw{ t 02_basics.sql }),
+    connect      => [ "dbi:SQLite:$file" ],
+    user_version => 10,
 );
 
 # Create the test package
@@ -39,10 +39,10 @@ package Foo::Bar;
 
 use strict;
 use ORLite {
-	file         => '$file',
-	readonly     => 1,
-	user_version => 10,
-	tables       => 0,
+    file         => '$file',
+    readonly     => 1,
+    user_version => 10,
+    tables       => 0,
 };
 
 1;
