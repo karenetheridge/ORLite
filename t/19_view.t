@@ -47,6 +47,8 @@ is( Foo::Bar->pragma('user_version'), 0, '->user_version ok' );
 is( Foo::Bar::ViewOne->base, 'Foo::Bar', '->base ok' );
 is( Foo::Bar::ViewOne->table, 'view_one', '->table ok' );
 my $columns = Foo::Bar::ViewOne->table_info;
+$_->{type} = lc $_->{type}
+	for @{$columns};
 is_deeply( $columns, [
 	{
 		cid        => 0,

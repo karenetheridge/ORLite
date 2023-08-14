@@ -60,6 +60,8 @@ is( Foo::Bar->pragma('user_version'), 0, '->user_version ok' );
 is( Foo::Bar::TableOne->base, 'Foo::Bar', '->base ok' );
 is( Foo::Bar::TableOne->table, 'tableOne', '->table ok' );
 my $columns = Foo::Bar::TableOne->table_info;
+$_->{type} = lc $_->{type}
+	for @{$columns};
 is_deeply( $columns, [
 	{
 		cid        => 0,
