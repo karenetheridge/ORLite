@@ -9,7 +9,7 @@ use File::Spec::Functions ':ALL';
 use File::Temp ();
 
 use vars qw{@ISA @EXPORT};
-our $VERSION = '1.99';
+our $VERSION = '2.00';
 BEGIN {
 	@ISA     = 'Exporter';
 	@EXPORT  = qw{ test_db connect_ok create_ok };
