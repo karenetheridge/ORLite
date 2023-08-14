@@ -1,8 +1,8 @@
 create table table_one (
-	col1 integer not null,
-	col2 integer not null,
-	col3 string,
-	primary key ('col1', 'col2')
+    col1 integer not null,
+    col2 integer not null,
+    col3 string,
+    primary key ('col1', 'col2')
 );
 
 insert into table_one ( col1, col2, col3 ) values ( 1, 1, 'a' );

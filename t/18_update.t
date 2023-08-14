@@ -3,8 +3,8 @@
 # Tests for the experimental update methods
 
 BEGIN {
-	$|  = 1;
-	$^W = 1;
+    $|  = 1;
+    $^W = 1;
 }
 
 use Test::More tests => 10;
@@ -22,8 +22,8 @@ use LocalTest;
 # Connect
 my $file = test_db();
 my $dbh  = create_ok(
-	file    => catfile(qw{ t 18_update.sql }),
-	connect => [ "dbi:SQLite:$file" ],
+    file    => catfile(qw{ t 18_update.sql }),
+    connect => [ "dbi:SQLite:$file" ],
 );
 
 # Create the test package
@@ -32,18 +32,18 @@ package Foo::Bar;
 
 use strict;
 use ORLite {
-	file => '$file',
+    file => '$file',
 };
 
 1;
 END_PERL
 
 isa_ok(
-	Foo::Bar::TableOne->create(
-		col1 => 1,
-		col2 => 'one',
-	),
-	'Foo::Bar::TableOne',
+    Foo::Bar::TableOne->create(
+        col1 => 1,
+        col2 => 'one',
+    ),
+    'Foo::Bar::TableOne',
 );
 
 
@@ -62,21 +62,21 @@ is( $one->col2, 'one', '->col2 ok' );
 # Update one accessor row
 is( $one->update( col2 => 'two' ), 1, '->update(accessor) ok' );
 is_deeply(
-	$one,
-	Foo::Bar::TableOne->load(1),
-	'Change is applied identically to object and database forms',
+    $one,
+    Foo::Bar::TableOne->load(1),
+    'Change is applied identically to object and database forms',
 );
 
 # Change a primary key as well
 is( $one->update( col1 => 3, col2 => 'three' ), 1, '->update(pk) ok' );
 is_deeply(
-	$one,
-	Foo::Bar::TableOne->load(3),
-	'Change is applied identically to object and database forms',
+    $one,
+    Foo::Bar::TableOne->load(3),
+    'Change is applied identically to object and database forms',
 );
 
 # Do we throw an exception on now columns
 eval {
-	$one->update();
+    $one->update();
 };
 ok( $@, 'Exception thrown on null update' );

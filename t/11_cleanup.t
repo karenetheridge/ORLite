@@ -3,8 +3,8 @@
 # Repeat the previous test, this time with a live transaction at END-time
 
 BEGIN {
-	$|  = 1;
-	$^W = 1;
+    $|  = 1;
+    $^W = 1;
 }
 
 use Test::More tests => 4;
@@ -19,8 +19,8 @@ use LocalTest;
 # Connect
 my $file = test_db();
 my $dbh  = create_ok(
-	file    => catfile(qw{ t 10_cleanup.sql }),
-	connect => [ "dbi:SQLite:$file" ],
+    file    => catfile(qw{ t 10_cleanup.sql }),
+    connect => [ "dbi:SQLite:$file" ],
 );
 
 # Create the test package
@@ -29,8 +29,8 @@ package Foo::Bar;
 
 use strict;
 use ORLite {
-	file    => '$file',
-	cleanup => 'VACUUM; ANALYZE',
+    file    => '$file',
+    cleanup => 'VACUUM; ANALYZE',
 };
 
 1;

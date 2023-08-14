@@ -3,20 +3,20 @@
 # Tests relating to foreign keys.
 
 BEGIN {
-	$|  = 1;
-	$^W = 1;
+    $|  = 1;
+    $^W = 1;
 }
 
 use Test::More;
 
 # Only run this test if we have Class::XSAccessor
 BEGIN {
-	eval { require Class::XSAccessor };
-	if ( ! $@ and Class::XSAccessor->VERSION and Class::XSAccessor->VERSION >= 1.05 ) {
-		plan( tests => 7 );
-	} else {
-		plan( skip_all => 'Class::XSAccessor 1.05 is not installed' );
-	}
+    eval { require Class::XSAccessor };
+    if ( ! $@ and Class::XSAccessor->VERSION and Class::XSAccessor->VERSION >= 1.05 ) {
+        plan( tests => 7 );
+    } else {
+        plan( skip_all => 'Class::XSAccessor 1.05 is not installed' );
+    }
 }
 use File::Spec::Functions ':ALL';
 use lib 't/lib';
@@ -32,8 +32,8 @@ use LocalTest;
 # Connect
 my $file = test_db();
 my $dbh  = create_ok(
-	file    => catfile(qw{ t 03_fk.sql }),
-	connect => [ "dbi:SQLite:$file" ],
+    file    => catfile(qw{ t 03_fk.sql }),
+    connect => [ "dbi:SQLite:$file" ],
 );
 
 # Create the test package
@@ -42,8 +42,8 @@ package Foo::Bar;
 
 use strict;
 use ORLite {
-	file       => '$file',
-	xsaccessor => 1,
+    file       => '$file',
+    xsaccessor => 1,
 };
 
 1;

@@ -4,14 +4,14 @@
 
 use strict;
 
-our $VERSION = '1.98';
+our $VERSION = '2.00';
 
 unless ( $ORLite::VERSION eq $VERSION ) {
-	die('Failed to load correct ORLite version');
+    die('Failed to load correct ORLite version');
 }
 
 unless ( Foo->can('sqlite') ) {
-	die('Failed to generate Foo package');
+    die('Failed to generate Foo package');
 }
 
 package Foo;

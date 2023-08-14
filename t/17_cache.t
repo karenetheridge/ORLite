@@ -4,8 +4,8 @@
 
 use strict;
 BEGIN {
-	$|  = 1;
-	$^W = 1;
+    $|  = 1;
+    $^W = 1;
 }
 
 use Test::More tests => 9;
@@ -15,11 +15,11 @@ use lib 't/lib';
 use LocalTest;
 
 # Where will the cache file be written to
-my $orlite_version = $t::lib::Test::VERSION;
+my $orlite_version = $LocalTest::VERSION;
 $orlite_version =~ s/[\._]/-/g;
 my $cached = catfile( 
-	"t",
-	"Foo-Bar-1-23-ORLite-$orlite_version-user_version-2.pm",
+    "t",
+    "Foo-Bar-1-23-ORLite-$orlite_version-user_version-2.pm",
 );
 clear($cached);
 ok( ! -e $cached, 'Cache file does not initially exist' );
@@ -27,8 +27,8 @@ ok( ! -e $cached, 'Cache file does not initially exist' );
 # Set up the database
 my $file = test_db();
 my $dbh  = create_ok(
-	file    => catfile(qw{ t 17_cache.sql }),
-	connect => [ "dbi:SQLite:$file" ],
+    file    => catfile(qw{ t 17_cache.sql }),
+    connect => [ "dbi:SQLite:$file" ],
 );
 
 # Create the test package
@@ -36,15 +36,15 @@ eval <<"END_PERL"; die $@ if $@;
 package Foo::Bar;
 
 use strict;
-use vars qw{\$VERSION};
+our \$VERSION;
 BEGIN {
-	\$VERSION = '1.23';
+    \$VERSION = '1.23';
 }
 
 use ORLite {
-	file         => '$file',
-	cache        => 't',
-	user_version => 2,
+    file         => '$file',
+    cache        => 't',
+    user_version => 2,
 };
 
 1;
@@ -61,14 +61,14 @@ my $inc1 = scalar keys %INC;
 
 # Delete the generated class (using hacky inlined Class::Unload)
 SCOPE: {
-	no strict 'refs';
-	
-	ok( Foo::Bar->VERSION, 'Foo::Bar exists' );
-	my $symtab = "Foo::Bar::";
-	@Foo::Bar::ISA = ();
-	for my $symbol ( keys %$symtab ) {
-		delete $symtab->{$symbol};
-	}
+    no strict 'refs';
+    
+    ok( Foo::Bar->VERSION, 'Foo::Bar exists' );
+    my $symtab = "Foo::Bar::";
+    @Foo::Bar::ISA = ();
+    for my $symbol ( keys %$symtab ) {
+        delete $symtab->{$symbol};
+    }
 }
 
 # Load the class again
@@ -76,15 +76,15 @@ eval <<"END_PERL"; die $@ if $@;
 package Foo::Bar;
 
 use strict;
-use vars qw{\$VERSION};
+our \$VERSION;
 BEGIN {
-	\$VERSION = '1.23';
+    \$VERSION = '1.23';
 }
 
 use ORLite {
-	file         => '$file',
-	cache        => 't',
-	user_version => 2,
+    file         => '$file',
+    cache        => 't',
+    user_version => 2,
 };
 
 1;

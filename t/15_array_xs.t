@@ -3,20 +3,20 @@
 # The same as 12_xs.t except with array => 1
 
 BEGIN {
-	$|  = 1;
-	$^W = 1;
+    $|  = 1;
+    $^W = 1;
 }
 
 use Test::More;
 
 # Only run this test if we have Class::XSAccessor
 BEGIN {
-	eval { require Class::XSAccessor::Array };
-	if ( ! $@ and Class::XSAccessor::Array->VERSION and Class::XSAccessor::Array->VERSION >= 1.05 ) {
-		plan( tests => 7 );
-	} else {
-		plan( skip_all => 'Class::XSAccessor::Array 1.05 is not installed' );
-	}
+    eval { require Class::XSAccessor::Array };
+    if ( ! $@ and Class::XSAccessor::Array->VERSION and Class::XSAccessor::Array->VERSION >= 1.05 ) {
+        plan( tests => 7 );
+    } else {
+        plan( skip_all => 'Class::XSAccessor::Array 1.05 is not installed' );
+    }
 }
 use File::Spec::Functions ':ALL';
 use lib 't/lib';
@@ -32,8 +32,8 @@ use LocalTest;
 # Connect
 my $file = test_db();
 my $dbh  = create_ok(
-	file    => catfile(qw{ t 03_fk.sql }),
-	connect => [ "dbi:SQLite:$file" ],
+    file    => catfile(qw{ t 03_fk.sql }),
+    connect => [ "dbi:SQLite:$file" ],
 );
 
 # Create the test package
@@ -42,9 +42,9 @@ package Foo::Bar;
 
 use strict;
 use ORLite {
-	file       => '$file',
-	array      => 1,
-	xsaccessor => 1,
+    file       => '$file',
+    array      => 1,
+    xsaccessor => 1,
 };
 
 1;
