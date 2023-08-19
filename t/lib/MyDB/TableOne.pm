@@ -2,7 +2,8 @@ package MyDB::TableOne;
 
 use strict;
 
-our $VERSION = '1.98';
+use ORLite ();
+our $VERSION = $ORLite::VERSION;
 
 sub dummy {
 	return 2;
