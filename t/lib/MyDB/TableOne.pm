@@ -1,4 +1,4 @@
-package t::lib::TableOne;
+package MyDB::TableOne;
 
 use strict;
 
