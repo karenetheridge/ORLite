@@ -12,7 +12,7 @@ use Params::Util 1.00 ();
 use DBI         1.607 ();
 use DBD::SQLite  1.27 ();
 
-our $VERSION = '2.00';
+our $VERSION = '2.01';
 
 # Support for the 'prune' option
 my @PRUNE = ();
